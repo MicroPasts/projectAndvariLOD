@@ -46,23 +46,12 @@ def handle_arguments():
                       dest="create_app",
                       help="Create the application",
                       metavar="CREATE-APP")
+    
     # Update template for tasks and long_description for app
     parser.add_option("-t", "--update-template", action="store_true",
                       dest="update_template",
                       help="Update Tasks template",
                       metavar="UPDATE-TEMPLATE")
-
-    # Update tasks question
-    parser.add_option("-q", "--update-tasks",
-                      type="int",
-                      dest="update_tasks",
-                      help="Update Tasks n_answers",
-                      metavar="UPDATE-TASKS")
-
-    parser.add_option("-x", "--extra-task", action="store_true",
-                      dest="add_more_tasks",
-                      help="Add more tasks",
-                      metavar="ADD-MORE-TASKS")
 
     # Modify the number of TaskRuns per Task
     # (default 30)
@@ -101,7 +90,7 @@ def get_configuration():
         with file(options.app_config) as app_json:
             app_config = json.load(app_json)
     except IOError:
-        print "application config file is missing! Please create a new one"
+        print "Application config file is missing! Please create a new one"
         exit(1)
 
     return (app_config, options)
@@ -155,41 +144,6 @@ def run(app_config, options):
         print "Updating app template"
         # discard return value
         setup_app()
-
-    if options.update_tasks:
-        def tasks(app):
-            offset = 0
-            limit = 100
-            while True:
-                try:
-                    tasks = pbclient.get_tasks(app.id, offset=offset, limit=limit)
-                    check_api_error(tasks)
-                    if len(tasks) == 0:
-                        break
-                    for task in tasks:
-                        yield task
-                    offset += len(tasks)
-                except:
-                    format_error("pbclient.get_tasks", response)
-
-        def update_task(task, count):
-            print "Updating task: %s" % task.id
-            if 'n_answers' in task.info:
-                del(task.info['n_answers'])
-            task.n_answers = options.update_tasks
-            try:
-                response = pbclient.update_task(task)
-                check_api_error(response)
-                count[0] += 1
-            except:
-                format_error("pbclient.update_task", response)
-
-        print "Updating task n_answers"
-        app = find_app_by_short_name()
-
-        n_tasks = [0]
-        [update_task(t, n_tasks) for t in tasks(app)]
-        print "%s Tasks have been updated!" % n_tasks[0]
 
 if __name__ == "__main__":
     app_config, options = get_configuration()
