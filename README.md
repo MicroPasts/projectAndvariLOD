@@ -6,7 +6,7 @@ for the multi-institutional collaboration known as Project Andvari.
 
 This application has three main files:
 
-*  createTasks.py: for creating the application in PyBossa, and fill it with some tasks.
+*  createTasks.py: for creating the application in PyBossa. Tasks will be imported from a CSV.
 *  template.html: the view for every task and deal with the data of the answers.
 *  tutorial.html: a simple tutorial for the volunteers.
 

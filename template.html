@@ -1,0 +1,94 @@
+<!-- Start of the survey modals -->
+
+<div id="survey" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Do you want to help us?</h4>
+            </div>
+            <div class="modal-body">
+                Thanks for contributing one task for the project. We are interested in knowing how you found out about
+                us.
+                <strong>Could you please answer two questions in a short survey?</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
+                <a class="btn btn-large btn-success"
+                   href="https://docs.google.com/forms/d/1Kgw8cvcufm-77PC2t_PL_b4y1_Tb9wJseimmb3cQIn4/viewform?embedded=true">Of
+                    course!
+                    Take me to the survey!</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="survey25" class="modal fade" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Congratulations for completing 25 tasks!</h4>
+            </div>
+            <div class="modal-body">
+                Thanks for contributing 25 tasks for the project. Now that you have been using MicroPasts for a while,
+                we would like to know how you found it. <strong>Could you please answer a few questions in a short
+                survey?</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
+                <a class="btn btn-large btn-success"
+                   href="https://docs.google.com/forms/d/1uczUGGYbrQ2FQfTtM8j4vfGr2qwcCMW6PLwzfvZZ6kI/viewform?embedded=true">Of
+                    course! Take me to the survey!</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- End of the survey modals -->
+
+<!-- Browser not compatible message -->
+<div style="display:none;margin-top:15px; height:500px;" id="oldbrowser" class="row">
+    <!-- Success and Error Messages for the user -->
+    <div  class="col-md-8 col-md-offset-1 alert alert-info">
+        <strong>Sorry, but your browser does not support the current application. If you want to contribute, please,
+            upgrade to a modern web browser like the open source and free alternative
+            <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a></strong>.
+    </div>
+</div> <!-- End of Row -->
+<!-- end of browser -->
+
+<!-- Start of messages -->
+<div style="margin-top:15px;">
+    <div id="success" class="alert alert-success" style="display:none;">
+        <strong>Well done!</strong> You have successfully submitted your transcription. Here is another to try if you wish!
+    </div>
+    <div id="loading" class="alert alert-info" style="display:none;">
+        <img src="/static/img/loading.gif">Loading next task...
+    </div>
+    <div id="taskcompleted" class="alert alert-info" style="display:none;">
+        <strong>The task has been completed!</strong> Thanks a lot!
+    </div>
+    <div id="finish" class="alert alert-success" style="display:none;">
+        <h2>Congratulations!</h2>
+          <p>
+              You have participated in all available tasks!
+          </p>
+          <img src="https://crowdfunded.micropasts.org/assets/logo-head.png"
+               height="200" width="200" alt="The MicroPasts Square Logo"/>
+          <div class="alert-actions">
+             <a class="btn-default btn" href="/">Go back to the home page</a>
+             <a class="btn-default btn" href="/app">or, have a look at our
+                 other applications</a>
+          </div>
+    </div>
+    <div id="error" class="alert alert-error" style="display:none;">
+        <a class="close">×</a>
+        <strong>Error!</strong> Something went wrong, please contact the site administrators
+    </div>
+</div>
+<!-- End Success and Error Messages for the user -->
