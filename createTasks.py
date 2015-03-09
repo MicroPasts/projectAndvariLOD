@@ -46,7 +46,7 @@ def handle_arguments():
                       dest="create_app",
                       help="Create the application",
                       metavar="CREATE-APP")
-    
+
     # Update template for tasks and long_description for app
     parser.add_option("-t", "--update-template", action="store_true",
                       dest="update_template",
@@ -71,8 +71,7 @@ def handle_arguments():
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     (options, args) = parser.parse_args()
 
-    if not options.create_app and not options.update_template\
-            and not options.add_more_tasks and not options.update_tasks:
+    if not options.create_app and not options.update_template:
         parser.error("Please check --help or -h for the available options")
 
     if not options.api_key:
