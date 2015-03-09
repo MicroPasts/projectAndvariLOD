@@ -92,3 +92,94 @@
     </div>
 </div>
 <!-- End Success and Error Messages for the user -->
+
+<!-- DOM skeleton row -->
+
+<!-- End of skeleton row -->
+
+<!-- Start of tutorial modals -->
+
+<!-- End of tutorial modals -->
+
+<!-- Start of scripts -->
+<!-- Client side scripts -->
+
+<script type="text/javascript">
+// Quick fix for IE8
+Modernizr.load({
+  test: window.JSON,
+  nope: '/static/js/vendor/json2.min.js'
+});
+</script>
+<!-- Step through modals -->
+<script type="text/javascript">
+    var step = -1;
+    function showStep(action) {
+        $("#" + step).hide();
+        if (action == 'next') {
+            step = step + 1;
+        }
+        if (action == 'prev') {
+            step = step - 1;
+        }
+        if (step == 0) {
+            $("#prevBtn").hide();
+        }
+        else {
+            $("#prevBtn").show();
+        }
+
+        if (step == 2) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        }
+        $("#" + step).show();
+    }
+
+    showStep('next');
+    $("#modal").modal('show');
+</script>
+
+<!-- Load user progress -->
+<script type="text/javascript">
+    function loadUserProgress() {
+        pybossa.userProgress('wgs').done(function(data){
+            console.log("Total answers done for user: " + data.done);
+            if ((data.done == 1) && ($.cookie('surveyWGS') == undefined)){
+               $("#survey").modal('show');
+               $.cookie('surveyWGS', 'shown', { path: '/'});
+            }
+            if ((data.done >= 25) && ($.cookie('survey25WGS') == undefined)){
+                $("#survey25").modal('show');
+                $.cookie('survey25WGS', 'shown', { path: '/'});
+            }
+            var pct = Math.round((data.done*100)/data.total);
+            $("#progress").css("width", pct.toString() +"%");
+            $("#progress").attr("title", pct.toString() + "% completed!");
+            $("#progress").tooltip({'placement': 'left'});
+            $("#total").text(data.total);
+            $("#done").text(data.done);
+            $('a[rel]').tooltip({'placement': 'left'});
+        });
+    });
+</script>
+
+<script type="text/javascript">
+        pybossa.taskLoaded(function(task, deferred) {
+        if ( ! $.isEmptyObject(task) ) {
+            loadUserProgress();
+            console.log("User progress loading now and deferred task resolve loading");
+            deferred.resolve(task);
+        } else {
+            console.log("Deferred task loading as task was empty");
+            deferred.resolve(task);
+        }
+    });
+</script>
+
+<!-- Check if window resized and log to console -->
+<script type="text/javascript">
+     $(window).resize(function(){
+        console.log('Window resized');
+      });
+</script>
