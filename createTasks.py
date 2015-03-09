@@ -68,6 +68,17 @@ def handle_arguments():
                       help="Application config file",
                       metavar="APP-CONFIG",
                       default="app.json")
+    # Update tasks question
+    parser.add_option("-q", "--update-tasks",
+                      type="int",
+                      dest="update_tasks",
+                      help="Update Tasks n_answers",
+                      metavar="UPDATE-TASKS")
+
+    parser.add_option("-x", "--extra-task", action="store_true",
+                      dest="add_more_tasks",
+                      help="Add more tasks",
+                      metavar="ADD-MORE-TASKS")
 
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     (options, args) = parser.parse_args()
