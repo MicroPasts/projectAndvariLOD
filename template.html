@@ -102,7 +102,7 @@
 
     <!-- Present the image and the base metadata loaded from RDF -->
     <div class="row">
-        <img src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1.png" class="pull-right" alt="The project Andvari logo" />
+        <img width="150px" src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1.png" class="pull-right" alt="The project Andvari logo" />
 
         <div class="btn-group">
             <a data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info" href="#">Tutorial</a>
@@ -116,7 +116,7 @@
 
         <div id="imgHolder">
             <div id="img">
-                <img src class="" />
+                <img src class="" id="image_url"/>
             </div>
         </div>
     </div>
@@ -275,6 +275,7 @@ Modernizr.load({
             $("a#download").attr("download", task.id);
             $("a#download").attr("href", task.info.img_url);
             $('#support').tooltip({'placement': 'top'});
+            $('#image_url').attr("src", task.info.img_url);
             $(".fancybox").fancybox();
 
             $('.btn-answer').off('click').on('click', function(evt) {
