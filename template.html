@@ -1,5 +1,8 @@
-<!-- Start of the survey modals -->
+<script src="/static/js/vendor/jquery.serializeJSON.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/static/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
+<!-- Start of the survey modals -->
 <div id="survey" class="modal fade" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -102,23 +105,26 @@
         <img src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1.png" class="pull-right" alt="The project Andvari logo" />
 
         <div class="btn-group">
-            <a href="" class="btn btn-xs btn-info">Tutorial</a>
-            <a href="" class="btn btn-xs btn-info">Community support</a>
-            <a href="" class="btn btn-xs btn-info">Original record</a>
-            <a href="" class="btn btn-xs btn-info">RDF representation</a>
-            <a href="" class="btn btn-xs btn-info">Overlay image</a>
-            <a href="" class="btn btn-xs btn-info">Download image</a>
+            <a data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info" href="#">Tutorial</a>
+            <a target="_blank" data-toggle="tooltip" data-placement="top"
+               title="Opens in a new window" href="http://community.micropasts.org/category/crowd-sourcing-support" class="btn btn-xs btn-info" id="support">Community support</a>
+            <a class="btn btn-xs btn-info" id="url">Original record</a>
+            <a class="btn btn-xs btn-info" id="rdf">RDF representation</a>
+            <a class="btn btn-xs btn-info" id="overlay">Overlay image</a>
+            <a class="btn btn-xs btn-info" id="download">Download image</a>
         </div>
 
         <div id="imgHolder">
-            <div id="img"></div>
+            <div id="img">
+                <img src class="" />
+            </div>
         </div>
     </div>
 
     <!-- Present tagging interface -->
     <div class="row" id="markUp">
         <form>
-            <!-- Enter drop down semantics here
+            <!-- Enter drop down semantics here -->
         </form>
         <!-- Comments on task -->
         <div class="form-group">
@@ -224,15 +230,15 @@ Modernizr.load({
 <!-- Load user progress -->
 <script type="text/javascript">
     function loadUserProgress() {
-        pybossa.userProgress('wgs').done(function(data){
+        pybossa.userProgress('andvari').done(function(data){
             console.log("Total answers done for user: " + data.done);
-            if ((data.done == 1) && ($.cookie('surveyWGS') == undefined)){
+            if ((data.done == 1) && ($.cookie('surveyAndvari') == undefined)){
                $("#survey").modal('show');
-               $.cookie('surveyWGS', 'shown', { path: '/'});
+               $.cookie('surveyAndvari', 'shown', { path: '/'});
             }
-            if ((data.done >= 25) && ($.cookie('survey25WGS') == undefined)){
+            if ((data.done >= 25) && ($.cookie('survey25Andvari') == undefined)){
                 $("#survey25").modal('show');
-                $.cookie('survey25WGS', 'shown', { path: '/'});
+                $.cookie('survey25Andvari', 'shown', { path: '/'});
             }
             var pct = Math.round((data.done*100)/data.total);
             $("#progress").css("width", pct.toString() +"%");
@@ -256,6 +262,52 @@ Modernizr.load({
             deferred.resolve(task);
         }
     });
+</script>
+
+<script type="text/javascript">
+    pybossa.presentTask(function(task, deferred) {
+        if ( !$.isEmptyObject(task) ) {
+            $("#question").html(task.info.question);
+            $('#task-id').html(task.id);
+            $("a#overlay").attr("href", task.info.img_url);
+            $("a#url").attr("href", task.info.display_url);
+            $("a#rdf").attr("href", task.info.uri);
+            $("a#download").attr("download", task.id);
+            $("a#download").attr("href", task.info.img_url);
+            $('#support').tooltip({'placement': 'top'});
+            $(".fancybox").fancybox();
+
+            $('.btn-answer').off('click').on('click', function(evt) {
+                evt.preventDefault();
+                var answer = $(evt.target).attr("value");
+                if (typeof answer != 'undefined') {
+                    task.answer = $("#markUp").serializeJSON();
+                    console.log(task.answer);
+                    console.log(data);
+                    task.answer.transcription = data;
+                    task.answer.comments = $("#comments").val();
+                    console.log(task.answer);
+                    pybossa.saveTask(task.id, task.answer).done(function() {
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        $("#success").fadeIn(500).fadeOut(500);
+                        $("#loading").fadeIn(500).fadeOut(500);
+                        $('#comments').val('');
+                        deferred.resolve();
+                    });
+                } else {
+                    $("#error").show();
+                }
+            });
+            $("#loading").hide();
+        } else {
+            $(".skeleton").hide();
+            $("#loading").hide();
+            $("#finish").fadeIn(500);
+        }
+    });
+    pybossa.run('andvari');
+    </script>
+
 </script>
 
 <!-- Check if window resized and log to console -->
