@@ -26,6 +26,13 @@ the development of the application and its usage. Check the [documentation](http
 Institutional partners
 ======================
 [![The Project Andvari logo](https://projectandvari.files.wordpress.com/2014/03/project_andvari_logo-for-wordpress-1.jpg)](http://andvari.org)
+
+Technical lead
+==============
+[![The British Museum logo](http://www.iath.virginia.edu/images/universal/IATH_logo.png)](http://www.iath.virginia.edu/)
+
+UK partners
+===========
 [![The British Museum logo](https://finds.org.uk/assets/logos/bm_logo.png)](http://britishmuseum.org)
 [![The Portable Antiquities Scheme logo](https://finds.org.uk/assets/logos/pas.jpg)](https://finds.org.uk)
 
