@@ -17,8 +17,8 @@ Data for this application will be imported from a csv file, and has a simple str
 
 * Object URI
 * Object image link
-* Image licence terms
 * Label chosen by project Andvari team
+* n_answers - the default redundancy of the app
 
 **NOTE**: This application uses the [pybossa-client](https://pypi.python.org/pypi/pybossa-client) in order to simplify
 the development of the application and its usage. Check the [documentation](http://pythonhosted.org/pybossa-client/).
