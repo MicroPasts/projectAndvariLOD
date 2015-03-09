@@ -95,13 +95,90 @@
 
 <!-- DOM skeleton row -->
 
+<div class="row skeleton">
+
+    <!-- Present the image and the base metadata loaded from RDF -->
+    <div class="row">
+        <img src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1.png" class="pull-right" alt="The project Andvari logo" />
+
+        <div class="btn-group">
+            <a href="" class="btn btn-xs btn-info">Original record</a>
+            <a href="" class="btn btn-xs btn-info">RDF representation</a>
+            <a href="" class="btn btn-xs btn-info">Overlay image</a>
+            <a href="" class="btn btn-xs btn-info">Download image</a>
+        </div>
+
+        <div id="imgHolder">
+            <div id="img"></div>
+            <div id="metadata"></div>
+        </div>
+    </div>
+
+    <!-- Present tagging interface -->
+
+    <!-- Comments on task -->
+    <div class="form-group">
+        <label class="control-label" for="comments">Transcriber's Comments</label>
+        <textarea class="form-control" rows="5"  id="comments" name="comments" placeholder="Add any comments you have"></textarea>
+    </div>
+
+    <!-- Present submission -->
+    <button class="btn btn-success btn-answer" value='Yes'>Submit the transcription</button>
+
+    <!-- Progress section -->
+    <p>
+        You are working now on task: <span id="task-id" class="label label-warning">#</span>
+    </p>
+    <p>
+        You have completed: <span id="done" class="label label-info"></span> tasks from
+        <!-- Progress bar for the user -->
+        <span id="total" class="label label-inverse"></span>
+    </p>
+    <div class="progress progress-striped">
+        <div id="progress" rel="tooltip" title="#" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+    </div>
+
+</div>
+
 <!-- End of skeleton row -->
 
 <!-- Start of tutorial modals -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h3>Linked Open Data exercise for Project Andvari</h3>
+            </div>
 
+            <!-- Step 1 of the tutorial -->
+            <div id="0" class="modal-body" style="display:none">
+
+            </div>
+
+            <!-- Step 2 of the tutorial -->
+            <div id="1" class="modal-body" style="display:none">
+
+            </div>
+
+            <!-- Step 2 of the tutorial -->
+            <div id="2" class="modal-body" style="display:none">
+
+            </div>
+            <!-- End of stepped modal body -->
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <button id="startContrib" data-dismiss="modal" class="btn btn-primary" style="display:none"/></a>
+                <i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End of tutorial modals -->
 
-<!-- Start of scripts -->
 <!-- Client side scripts -->
 
 <script type="text/javascript">
@@ -183,3 +260,19 @@ Modernizr.load({
         console.log('Window resized');
       });
 </script>
+
+
+<!-- App css -->
+<style type="text/css">
+    .btn-answer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+    .btn-group {
+    margin-bottom: 0px
+    }
+    .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+</style>
