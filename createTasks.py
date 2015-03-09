@@ -21,8 +21,8 @@ from optparse import OptionParser
 import pbclient
 import random
 import logging
+import time
 from requests import exceptions
-from time import sleep
 
 
 def contents(filename):
@@ -41,26 +41,43 @@ def handle_arguments():
     parser.add_option("-k", "--api-key", dest="api_key",
                       help="PyBossa User API-KEY to interact with PyBossa",
                       metavar="API-KEY")
+    # Flickr Photoset ID
+    parser.add_option("-i", "--id", dest="photoset_id",
+                      help="Flickr Photoset ID to import",
+                      metavar="PHOTOSET-ID")
+
     # Create App
     parser.add_option("-c", "--create-app", action="store_true",
                       dest="create_app",
                       help="Create the application",
                       metavar="CREATE-APP")
-
     # Update template for tasks and long_description for app
     parser.add_option("-t", "--update-template", action="store_true",
                       dest="update_template",
                       help="Update Tasks template",
                       metavar="UPDATE-TEMPLATE")
 
+    # Update tasks question
+    parser.add_option("-q", "--update-tasks",
+                      type="int",
+                      dest="update_tasks",
+                      help="Update Tasks n_answers",
+                      metavar="UPDATE-TASKS")
+
+    parser.add_option("-x", "--extra-task", action="store_true",
+                      dest="add_more_tasks",
+                      help="Add more tasks",
+                      metavar="ADD-MORE-TASKS")
+
     # Modify the number of TaskRuns per Task
-    # (default 30)
+    # (default 2)
+    # Changed default to 2 on the 19th August
     parser.add_option("-n", "--number-answers",
                       type="int",
                       dest="n_answers",
                       help="Number of answers per task",
                       metavar="N-ANSWERS",
-                      default=3)
+                      default=2)
 
     parser.add_option("-a", "--application-config",
                       dest="app_config",
@@ -71,7 +88,8 @@ def handle_arguments():
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     (options, args) = parser.parse_args()
 
-    if not options.create_app and not options.update_template:
+    if not options.create_app and not options.update_template\
+            and not options.add_more_tasks and not options.update_tasks:
         parser.error("Please check --help or -h for the available options")
 
     if not options.api_key:
@@ -89,14 +107,13 @@ def get_configuration():
         with file(options.app_config) as app_json:
             app_config = json.load(app_json)
     except IOError:
-        print "Application config file is missing! Please create a new one"
+        print "application config file is missing! Please create a new one"
         exit(1)
 
     return (app_config, options)
 
 
 def run(app_config, options):
-
     def check_api_error(api_response):
         """Check if returned API response contains an error"""
         if type(api_response) == dict and (api_response.get('status') == 'failed'):
@@ -123,6 +140,8 @@ def run(app_config, options):
     def setup_app():
         app = find_app_by_short_name()
         app.long_description = contents('long_description.html')
+        app.category_id = 5
+        app.hidden = 1
         app.info['task_presenter'] = contents('template.html')
         app.info['thumbnail'] = app_config['thumbnail']
         app.info['tutorial'] = contents('tutorial.html')
@@ -141,11 +160,60 @@ def run(app_config, options):
         print('Running against PyBosssa instance at: %s' % options.api_url)
         print('Using API-KEY: %s' % options.api_key)
 
+    if options.create_app or options.add_more_tasks:
+        if options.create_app:
+            try:
+                response = pbclient.create_app(app_config['name'],
+                                               app_config['short_name'],
+                                               app_config['description'])
+
+                check_api_error(response)
+                app = setup_app()
+            except:
+                format_error("pbclient.create_app", response)
+        else:
+            app = find_app_by_short_name()
 
     if options.update_template:
         print "Updating app template"
         # discard return value
         setup_app()
 
+    if options.update_tasks:
+        def tasks(app):
+            offset = 0
+            limit = 100
+            while True:
+                try:
+                    tasks = pbclient.get_tasks(app.id, offset=offset, limit=limit)
+                    check_api_error(tasks)
+                    if len(tasks) == 0:
+                        break
+                    for task in tasks:
+                        yield task
+                    offset += len(tasks)
+                except:
+                    format_error("pbclient.get_tasks", response)
+
+        def update_task(task, count):
+            print "Updating task: %s" % task.id
+            if 'n_answers' in task.info:
+                del(task.info['n_answers'])
+            task.n_answers = options.update_tasks
+            try:
+                response = pbclient.update_task(task)
+                check_api_error(response)
+                count[0] += 1
+            except:
+                format_error("pbclient.update_task", response)
+
+        print "Updating task n_answers"
+        app = find_app_by_short_name()
+
+        n_tasks = [0]
+        [update_task(t, n_tasks) for t in tasks(app)]
+        print "%s Tasks have been updated!" % n_tasks[0]
+
 if __name__ == "__main__":
     app_config, options = get_configuration()
+    run(app_config, options)
