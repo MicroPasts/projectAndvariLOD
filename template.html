@@ -102,6 +102,8 @@
         <img src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1.png" class="pull-right" alt="The project Andvari logo" />
 
         <div class="btn-group">
+            <a href="" class="btn btn-xs btn-info">Tutorial</a>
+            <a href="" class="btn btn-xs btn-info">Community support</a>
             <a href="" class="btn btn-xs btn-info">Original record</a>
             <a href="" class="btn btn-xs btn-info">RDF representation</a>
             <a href="" class="btn btn-xs btn-info">Overlay image</a>
@@ -110,18 +112,20 @@
 
         <div id="imgHolder">
             <div id="img"></div>
-            <div id="metadata"></div>
         </div>
     </div>
 
     <!-- Present tagging interface -->
-
-    <!-- Comments on task -->
-    <div class="form-group">
-        <label class="control-label" for="comments">Transcriber's Comments</label>
-        <textarea class="form-control" rows="5"  id="comments" name="comments" placeholder="Add any comments you have"></textarea>
+    <div class="row" id="markUp">
+        <form>
+            <!-- Enter drop down semantics here
+        </form>
+        <!-- Comments on task -->
+        <div class="form-group">
+            <label class="control-label" for="comments">Please add your comments (concerns, suggestions, problems etc)</label>
+            <textarea class="form-control" rows="5"  id="comments" name="comments" placeholder="Add any comments you have"></textarea>
+        </div>
     </div>
-
     <!-- Present submission -->
     <button class="btn btn-success btn-answer" value='Yes'>Submit the transcription</button>
 
