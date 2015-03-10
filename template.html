@@ -454,6 +454,10 @@ Modernizr.load({
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $("#objectType").select2({
+            placeholder: "Select object types",
+            allowClear: true
+        });
         $("#objectType").select2();
         $("#subjectMatter").select2();
         $("#naturalWorld").select2();
