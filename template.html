@@ -534,7 +534,7 @@ Modernizr.load({
             $("a#download").attr("href", task.info.img_url);
             $('#support').tooltip({'placement': 'top'});
             $('#image_url').attr("src", task.info.img_url);
-            $('#label').html(task.label);
+            $('#label').html(task.info.label);
             $(".fancybox").fancybox();
 
             $('.btn-answer').off('click').on('click', function(evt) {
