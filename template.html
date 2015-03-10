@@ -136,7 +136,7 @@
                     <!-- Enter drop down semantics here -->
                     <div class="form-group">
                         <label class="control-label" for="abstract">Please choose attributes for the abstract level represented:</label>
-                        <select id="abstract"  class="col-md-6" multiple="multiple">
+                        <select id="abstract"  class="col-md-6 selection" multiple="multiple">
                             <option value="http://www.andvari.org/iconographythesaurus/000003">Motif</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000004">Animal Interlace</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000005">Foliate Interlace
@@ -154,7 +154,7 @@
                     <div class="form-group">
                         <label class="control-label" for="builtEnvironment">Please choose attributes of the built
                             environment represented:</label>
-                        <select id="builtEnvironment"  class="col-md-6" multiple="multiple">
+                        <select id="builtEnvironment" class="col-md-6 selection" multiple="multiple">
                             <option value="http://www.andvari.org/iconographythesaurus/000011">Building</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000012">Enclosure</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000013">Portal</option>
@@ -169,7 +169,7 @@
                 <div class="row">
                     <div class="form-group">
                         <label class="control-label" for="attributes">Please choose physical attributes displayed within the image:</label>
-                        <select id="attributes"  class="col-md-6" multiple="multiple">
+                        <select id="attributes" class="col-md-6 selection" multiple="multiple">
                             <option value="http://www.andvari.org/iconographythesaurus/000019">Human</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000020">Body Part</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000021">Christian Ornament
@@ -254,7 +254,7 @@
                 <div class="row">
                     <div class="form-group">
                         <label class="control-label" for="objectType">Please choose object types show within the image:</label>
-                        <select id="objectType"  class="col-md-6" multiple="multiple">
+                        <select id="objectType"  class="col-md-6 selection" multiple="multiple">
                             <option value="http://www.andvari.org/iconographythesaurus/000087">Armor</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000088">Book</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000089">Cross</option>
@@ -322,7 +322,7 @@
                 <div class="row">
                     <div class="form-group">
                         <label class="control-label" for="subjectMatter">Please choose the subject matter shown in the image:</label>
-                        <select id="subjectMatter" multiple="multiple"  class="col-md-6">
+                        <select id="subjectMatter" multiple="multiple"  class="col-md-6 selection">
                             <option value="http://www.andvari.org/iconographythesaurus/000148">Christian</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000149">Norse</option>
                             <option value="http://www.andvari.org/iconographythesaurus/000150">Evangelist Symbol
@@ -557,7 +557,7 @@ Modernizr.load({
                         $("#loading").fadeIn(500).fadeOut(500);
                         $('#comments').val('');
                         $('#terms').val('');
-                        $('select').val('');
+                        $(".selection").select2("val", "");
                         deferred.resolve();
                     });
                 } else {
