@@ -371,6 +371,7 @@
             <div id="imgHolder" class="pull-right">
                 <div id="img">
                     <h2 class="lead" id="label"></h2>
+                    <p>Institution sourced from: <span id="institution"></span></p>
                     <img class="img-polaroid andImage" id="image_url"/>
                 </div>
             </div>
@@ -535,6 +536,7 @@ Modernizr.load({
             $('#support').tooltip({'placement': 'top'});
             $('#image_url').attr("src", task.info.img_url);
             $('#label').html(task.info.label);
+            $('#institution').html(task.info.institution);
             $(".fancybox").fancybox();
 
             $('.btn-answer').off('click').on('click', function(evt) {
@@ -542,7 +544,6 @@ Modernizr.load({
                 var answer = $(evt.target).attr("value");
                 if (typeof answer != 'undefined') {
                     task.answer = $("#markUp").serializeJSON();
-                    console.log(task.answer);
                     task.answer.abstract = $("#abstract").val();
                     task.answer.objectType = $("#objectType").val();
                     task.answer.attributes = $("#attributes").val();
@@ -550,7 +551,7 @@ Modernizr.load({
                     task.answer.subjectMatter = $("#subjectMatter").val();
                     task.answer.terms = $("terms").val();
                     task.answer.comments = $("#comments").val();
-                    console.log(task.answer);
+                    console.log(task.answer.abstract);
                     pybossa.saveTask(task.id, task.answer).done(function() {
                         $("html, body").animate({ scrollTop: 0 }, "slow");
                         $("#success").fadeIn(500).fadeOut(500);
