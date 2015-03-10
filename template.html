@@ -550,7 +550,7 @@ Modernizr.load({
                     task.answer.attributes = $("#attributes").val();
                     task.answer.naturalWorld = $("#naturalWorld").val();
                     task.answer.subjectMatter = $("#subjectMatter").val();
-                    task.answer.terms = $("terms").val();
+                    task.answer.terms = $("#terms").val();
                     task.answer.comments = $("#comments").val();
                     console.log(task.answer.abstract);
                     pybossa.saveTask(task.id, task.answer).done(function() {
