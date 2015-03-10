@@ -370,6 +370,7 @@
         <div class="col-md-6">
             <div id="imgHolder" class="pull-right">
                 <div id="img">
+                    <h2 class="lead" id="label"></h2>
                     <img class="img-polaroid andImage" id="image_url"/>
                 </div>
             </div>
@@ -533,6 +534,7 @@ Modernizr.load({
             $("a#download").attr("href", task.info.img_url);
             $('#support').tooltip({'placement': 'top'});
             $('#image_url').attr("src", task.info.img_url);
+            $('#label').html(task.label);
             $(".fancybox").fancybox();
 
             $('.btn-answer').off('click').on('click', function(evt) {
