@@ -1,9 +1,10 @@
 <script src="/static/js/vendor/jquery.serializeJSON.min.js" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="/static/vendor/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<link rel="stylesheet" href="/static/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/static/vendor/select2-3.5.1/select2.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/static/css/select2-bootstrap.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/static/vendor/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" type="text/css"
+      media="screen"/>
+<link rel="stylesheet" href="/static/vendor/select2-3.5.1/select2.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/css/select2-bootstrap.css" type="text/css" media="screen"/>
 
 <!-- Multi-select scripts -->
 <script src="/static/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
@@ -70,10 +71,11 @@
 <!-- Browser not compatible message -->
 <div style="display:none;margin-top:15px; height:500px;" id="oldbrowser" class="row">
     <!-- Success and Error Messages for the user -->
-    <div  class="col-md-8 col-md-offset-1 alert alert-info">
+    <div class="col-md-8 col-md-offset-1 alert alert-info">
         <strong>Sorry, but your browser does not support the current application. If you want to contribute, please,
             upgrade to a modern web browser like the open source and free alternative
-            <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a></strong>.
+            <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a
+                    href="https://www.google.com/intl/en/chrome/browser/">Chrome</a></strong>.
     </div>
 </div> <!-- End of Row -->
 <!-- end of browser -->
@@ -81,7 +83,8 @@
 <!-- Start of messages -->
 <div style="margin-top:15px;">
     <div id="success" class="alert alert-success" style="display:none;">
-        <strong>Well done!</strong> You have successfully submitted your transcription. Here is another to try if you wish!
+        <strong>Well done!</strong> You have successfully submitted your transcription. Here is another to try if you
+        wish!
     </div>
     <div id="loading" class="alert alert-info" style="display:none;">
         <img src="/static/img/loading.gif">Loading next task...
@@ -91,16 +94,18 @@
     </div>
     <div id="finish" class="alert alert-success" style="display:none;">
         <h2>Congratulations!</h2>
-          <p>
-              You have participated in all available tasks!
-          </p>
-          <img src="https://crowdfunded.micropasts.org/assets/logo-head.png"
-               height="200" width="200" alt="The MicroPasts Square Logo"/>
-          <div class="alert-actions">
-             <a class="btn-default btn" href="/">Go back to the home page</a>
-             <a class="btn-default btn" href="/app">or, have a look at our
-                 other applications</a>
-          </div>
+
+        <p>
+            You have participated in all available tasks!
+        </p>
+        <img src="https://crowdfunded.micropasts.org/assets/logo-head.png"
+             height="200" width="200" alt="The MicroPasts Square Logo"/>
+
+        <div class="alert-actions">
+            <a class="btn-default btn" href="/">Go back to the home page</a>
+            <a class="btn-default btn" href="/app">or, have a look at our
+                other applications</a>
+        </div>
     </div>
     <div id="error" class="alert alert-error" style="display:none;">
         <a class="close">×</a>
@@ -118,7 +123,8 @@
         <div class="btn-group">
             <a data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info" href="#">Tutorial</a>
             <a target="_blank" data-toggle="tooltip" data-placement="top"
-               title="Opens in a new window" href="http://community.micropasts.org/category/crowd-sourcing-support" class="btn btn-xs btn-info" id="support">Community support</a>
+               title="Opens in a new window" href="http://community.micropasts.org/category/crowd-sourcing-support"
+               class="btn btn-xs btn-info" id="support">Community support</a>
             <a class="btn btn-xs btn-info" id="url">Original record</a>
             <a class="btn btn-xs btn-info" id="rdf">RDF representation</a>
             <a class="btn btn-xs btn-info fancybox" id="overlay">Overlay image</a>
@@ -133,7 +139,7 @@
                 <div class="row">
                     <!-- Enter drop down semantics here -->
                     <label class="control-label" for="abstract">Please choose the abstract level of this image:</label>
-                    <br />
+                    <br/>
                     <select id="abstract" class="multiselect" multiple="multiple">
                         <option value="http://www.andvari.org/iconographythesaurus/000003">Motif</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000004">Animal Interlace</option>
@@ -146,20 +152,24 @@
                 </div>
 
                 <div class="row">
-                    <label class="control-label" for="builtEnvironment">Please choose attributes of built environment:</label>
-                    <select id="builtEnvironment" class="multiselect" multiple="multiple" >
-                        <option value="http://www.andvari.org/iconographythesaurus/000011">Building</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000012">Enclosure</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000013">Portal</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000014">Hall</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000015">House</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000016">Hellmouth</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000017">Figure</option>
-                    </select>
+                    <div class="form-group">
+                        <label class="control-label" for="builtEnvironment">Please choose attributes of built
+                            environment:</label>
+                        <select id="builtEnvironment" class="multiselect" multiple="multiple">
+                            <option value="http://www.andvari.org/iconographythesaurus/000011">Building</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000012">Enclosure</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000013">Portal</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000014">Hall</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000015">House</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000016">Hellmouth</option>
+                            <option value="http://www.andvari.org/iconographythesaurus/000017">Figure</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
                     <label class="control-label" for="attributes">Please choose attributes shown:</label>
+                    <br/>
                     <select id="attributes" class="multiselect" multiple="multiple">
                         <option value="http://www.andvari.org/iconographythesaurus/000019">Human</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000020">Body Part</option>
@@ -184,7 +194,8 @@
                         <option value="http://www.andvari.org/iconographythesaurus/000039">Female</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000040">Male</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000041">Child</option>
-                        <option value="http://www.andvari.org/iconographythesaurus/000042">Ecclesiastical Figure</option>
+                        <option value="http://www.andvari.org/iconographythesaurus/000042">Ecclesiastical Figure
+                        </option>
                         <option value="http://www.andvari.org/iconographythesaurus/000043">Queen</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000044">Warrior</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000045">Horseman</option>
@@ -193,7 +204,8 @@
                 </div>
 
                 <div class="row">
-                    <label class="control-label" for="naturalWorld">Please choose natural world attributions:</label>
+                    <label class="control-label" for="naturalWorld">Please choose natural world
+                        attributions:</label><br/>
                     <select id="naturalWorld" class="multiselect" multiple="multiple">
                         <option value="http://www.andvari.org/iconographythesaurus/000048">Animal</option>
                         <option value="http://www.andvari.org/iconographythesaurus/000049">Celestial Body</option>
@@ -300,7 +312,7 @@
                         <option value="http://www.andvari.org/iconographythesaurus/000146">Sword</option>
                     </select>
                 </div>
-                
+
                 <div class="row">
                     <label class="control-label" for="subjectMatter">Please choose subject matter:</label>
                     <select id="subjectMatter" class="multiselect" multiple="multiple">
@@ -332,13 +344,15 @@
                 </div>
                 <!-- End of test dropdowns -->
                 <div class="form-group">
-                    <label class="control-label" for="comments">Please add your comments (concerns, suggestions, problems etc)</label>
-                    <textarea class="form-control" rows="5"  id="comments" name="comments" placeholder="Add any comments you have"></textarea>
+                    <label class="control-label" for="comments">Please add your comments (concerns, suggestions,
+                        problems etc)</label>
+                    <textarea class="form-control" rows="5" id="comments" name="comments"
+                              placeholder="Add any comments you have"></textarea>
                 </div>
             </form>
         </div>
         <div class="col-md-6">
-             <div id="imgHolder" class="pull-right">
+            <div id="imgHolder" class="pull-right">
                 <div id="img">
                     <img class="img-polaroid andImage" id="image_url"/>
                 </div>
@@ -354,11 +368,13 @@
     <p>
         You are working now on task: <span id="task-id" class="label label-warning">#</span>
     </p>
+
     <p>
         You have completed: <span id="done" class="label label-info"></span> tasks from
         <!-- Progress bar for the user -->
         <span id="total" class="label label-inverse"></span>
     </p>
+
     <div class="progress progress-striped">
         <div id="progress" rel="tooltip" title="#" class="progress-bar" role="progressbar" style="width: 0%;"></div>
     </div>
@@ -396,7 +412,8 @@
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <button id="startContrib" data-dismiss="modal" class="btn btn-primary" style="display:none"/></a>
+                <button id="startContrib" data-dismiss="modal" class="btn btn-primary" style="display:none"/>
+                </a>
                 <i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
             </div>
         </div>
@@ -412,6 +429,7 @@ Modernizr.load({
   test: window.JSON,
   nope: '/static/js/vendor/json2.min.js'
 });
+
 </script>
 
 <script type="text/javascript">
@@ -423,6 +441,7 @@ Modernizr.load({
         $("#builtEnvironment").select2();
         $("#abstract").select2();
     });
+
 </script>
 <!-- Step through modals -->
 <script type="text/javascript">
@@ -451,6 +470,7 @@ Modernizr.load({
 
     showStep('next');
     $("#modal").modal('show');
+
 </script>
 
 <!-- Load user progress -->
@@ -475,6 +495,7 @@ Modernizr.load({
             $('a[rel]').tooltip({'placement': 'left'});
         });
     }
+
 </script>
 
 <script type="text/javascript">
@@ -488,6 +509,7 @@ Modernizr.load({
             deferred.resolve(task);
         }
     });
+
 </script>
 
 <script type="text/javascript">
@@ -533,7 +555,8 @@ Modernizr.load({
         }
     });
     pybossa.run('andvari');
-    </script>
+
+</script>
 
 </script>
 
@@ -562,18 +585,18 @@ Modernizr.load({
     max-height:500px;
     }
     .ui-autocomplete {
-        background-color: white;
-        width: 300px;
-        border: 1px solid #cfcfcf;
-        list-style-type: none;
-        padding: 10px;
+    background-color: white;
+    width: 300px;
+    border: 1px solid #cfcfcf;
+    list-style-type: none;
+    padding: 10px;
     }
     .multiselect-container {
-        max-height: 250px;
-        overflow-y: auto;
-        overflow-x: hidden;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
     }
     .multiselect {
-        width:250px;
+    width:250px;
     }
 </style>
