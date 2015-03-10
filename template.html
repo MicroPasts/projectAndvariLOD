@@ -557,7 +557,7 @@ Modernizr.load({
                         $("#loading").fadeIn(500).fadeOut(500);
                         $('#comments').val('');
                         $('#terms').val('');
-                        $('select').select2('data', null);
+                        $.fn.select2.defaults.reset();
                         deferred.resolve();
                     });
                 } else {
