@@ -557,7 +557,11 @@ Modernizr.load({
                         $("#loading").fadeIn(500).fadeOut(500);
                         $('#comments').val('');
                         $('#terms').val('');
-                        $(".selection").select2("val", "");
+                        $("#objectType").select2("val", "");
+                        $("#abstract").select2("val", "");
+                        $("#attributes").select2("val", "");
+                        $("#builtEnvironment").select2("val", "");
+                        $("#subjectMatter").select2("val", "");
                         deferred.resolve();
                     });
                 } else {
