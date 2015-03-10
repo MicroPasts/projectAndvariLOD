@@ -416,8 +416,12 @@ Modernizr.load({
 
 <script type="text/javascript">
     $(document).ready(function() {
-        
-        $('.multiselect').multiselect();
+        $("#objectType").select2();
+        $("#subjectMatter").select2();
+        $("#naturalWorld").select2();
+        $("#attributes").select2();
+        $("#builtEnvironment").select2();
+        $("#abstract").select2();
     });
 </script>
 <!-- Step through modals -->
@@ -568,5 +572,8 @@ Modernizr.load({
         max-height: 250px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+    .multiselect {
+        width:250px;
     }
 </style>
