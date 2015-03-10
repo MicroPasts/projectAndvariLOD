@@ -131,7 +131,7 @@
         <div class="col-md-6">
             <p>Please look at the image on the right and choose attributes from the dropdowns below to help us with Project Andvari's
     ontological modelling processes.</p>
-            <form>
+            <form id="tags">
                 <div class="row">
                     <!-- Enter drop down semantics here -->
                     <div class="form-group">
@@ -482,10 +482,6 @@ Modernizr.load({
 
     showStep('next');
     $("#modal").modal('show');
-
-
-
-
 </script>
 
 <!-- Load user progress -->
@@ -510,10 +506,6 @@ Modernizr.load({
             $('a[rel]').tooltip({'placement': 'left'});
         });
     }
-
-
-
-
 </script>
 
 <script type="text/javascript">
@@ -527,10 +519,6 @@ Modernizr.load({
             deferred.resolve(task);
         }
     });
-
-
-
-
 </script>
 
 <script type="text/javascript">
@@ -553,8 +541,12 @@ Modernizr.load({
                 if (typeof answer != 'undefined') {
                     task.answer = $("#markUp").serializeJSON();
                     console.log(task.answer);
-                    console.log(data);
-                    task.answer.transcription = data;
+                    task.answer.abstract = $("#abstract").val();
+                    task.answer.objectType = $("#objectType").val();
+                    task.answer.attributes = $("#attributes").val();
+                    task.answer.naturalWorld = $("#naturalWorld").val();
+                    task.answer.subjectMatter = $("#subjectMatter").val();
+                    task.answer.terms = $("terms").val();
                     task.answer.comments = $("#comments").val();
                     console.log(task.answer);
                     pybossa.saveTask(task.id, task.answer).done(function() {
@@ -562,6 +554,8 @@ Modernizr.load({
                         $("#success").fadeIn(500).fadeOut(500);
                         $("#loading").fadeIn(500).fadeOut(500);
                         $('#comments').val('');
+                        $('#terms').val('');
+                        $('#tags').trigger("reset");
                         deferred.resolve();
                     });
                 } else {
@@ -576,10 +570,6 @@ Modernizr.load({
         }
     });
     pybossa.run('andvari');
-
-
-
-
 </script>
 
 
