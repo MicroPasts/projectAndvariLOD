@@ -1,12 +1,11 @@
 <script src="/static/js/vendor/jquery.serializeJSON.min.js" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="/static/vendor/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
-<link rel="stylesheet" href="/static/vendor/select2-3.5.1/select2.css" type="text/css" media="screen"/>
 
 <!-- Select 2 script -->
-<script src="/static/vendor/select2-3.5.1/select2.js" type="text/javascript"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js"></script>
 
-<script src="https://code.jquery.com/ui/1.8.1/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Fancy box script -->
 <script src="/static/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
@@ -356,7 +355,7 @@
                 <div class="row">
                     <div class="form-group">
                         <label class="control-label" for="terms">Other terms</label>
-                        <input class="form-control" type="text" name="terms" placeholder="Enter comma separated terms">
+                        <input class="form-control" type="text" name="terms" id="terms" placeholder="Enter comma separated terms">
                     </div>
                 </div>
                 <!-- End of test dropdowns -->
@@ -453,18 +452,8 @@ Modernizr.load({
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#objectType").select2({
-            placeholder: "Select object types",
-            allowClear: true
-        });
-        $("#objectType").select2();
-        $("#subjectMatter").select2();
-        $("#naturalWorld").select2();
-        $("#attributes").select2();
-        $("#builtEnvironment").select2();
-        $("#abstract").select2();
-    });
+  $('select').select2();
+</script>
 
 
 
