@@ -401,8 +401,15 @@
 </div>
 
 <!-- End of skeleton row -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h3>Linked Open Data exercise for Project Andvari</h3>
+            </div>
 
-<!-- Step 1 of the tutorial -->
+            <!-- Step 1 of the tutorial -->
             <div id="0" class="modal-body" style="display:none">
                 <img src="https://pbs.twimg.com/profile_images/457199979115732992/PqXVloa1_200x200.png" class="pull-right"/>
                 <p>
@@ -465,6 +472,17 @@
                 </p>
             </div>
             <!-- End of stepped modal body -->
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <button id="startContrib" data-dismiss="modal" class="btn btn-primary" style="display:none"/></a>
+                <i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Client side scripts -->
 
